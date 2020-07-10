@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     bool turnClockwise;
     float timer;
     bool isDead;
+    Vector3 mainCamPos;
 
     WallDetector wallDetectorScript;
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         turnClockwise = true;
         timer = 0f;
         isDead = false;
+        mainCamPos = Camera.main.transform.position;
 
         wallDetectorScript = transform.GetChild(0).GetComponent<WallDetector>();
     }
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Stop update if dead
         if(isDead)
         {
             return;
@@ -61,6 +64,14 @@ public class Player : MonoBehaviour
             {
                 maxAngle = minAngle + 90f;
             }
+        }
+
+        // Update camera position
+        if(mainCamPos.y < transform.position.y)
+        {
+            mainCamPos.y = transform.position.y;
+
+            Camera.main.transform.position = mainCamPos;
         }
     }
 
