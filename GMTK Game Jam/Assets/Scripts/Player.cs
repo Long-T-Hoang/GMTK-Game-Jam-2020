@@ -12,19 +12,30 @@ public class Player : MonoBehaviour
     bool isTurn;
     bool turnClockwise;
     float timer;
+    bool isDead;
+
+    WallDetector wallDetectorScript;
 
     // Start is called before the first frame update
     void Start()
     {
         minAngle = 0;
         isTurn = false;
-        turnClockwise = false;
+        turnClockwise = true;
         timer = 0f;
+        isDead = false;
+
+        wallDetectorScript = transform.GetChild(0).GetComponent<WallDetector>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isDead)
+        {
+            return;
+        }
+
         if (isTurn)
         {
             timer += Time.deltaTime;
@@ -33,6 +44,23 @@ public class Player : MonoBehaviour
         else
         {
             MoveForward();
+        }
+
+        // Set action to turning and calculate starting and final angle
+        if (wallDetectorScript.isWall && !isTurn)
+        {
+            minAngle = transform.eulerAngles.z;
+            isTurn = true;
+            wallDetectorScript.isWall = false;
+
+            if (turnClockwise)
+            {
+                maxAngle = minAngle - 90f;
+            }
+            else
+            {
+                maxAngle = minAngle + 90f;
+            }
         }
     }
 
@@ -56,26 +84,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Set action to turning and calculate starting and final angle
-        if(collision.transform.tag == "Wall" && !isTurn)
-        {
-            minAngle = transform.eulerAngles.z;
-            isTurn = true;
-
-            if (turnClockwise)
-            {
-                maxAngle = minAngle - 90f;
-            }
-            else
-            {
-                maxAngle = minAngle + 90f;
-            }
-        }
-
         // Change direction of turning when entering special zones
         if(collision.transform.tag == "Reverse Zone")
         {
             turnClockwise = !turnClockwise;
+        }
+
+        // Die on colliding with an object with "Death" tag
+        if(collision.transform.tag == "Death")
+        {
+            isDead = true;
         }
     }
 
