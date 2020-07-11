@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.EventSystems;
 
 public class GridScript : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class GridScript : MonoBehaviour
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            highlightMap.SetTile(currentCell, null);
+
+            return;
+        }
+
         // get current grid location
         currentCell = highlightMap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
@@ -38,6 +46,23 @@ public class GridScript : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
+        {
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if(hit.collider != null)
+            {
+                if(hit.transform.CompareTag("Wall"))
+                {
+                    return;
+                }
+            }
+
             placementMap.SetTile(currentCell, placementTile);
+        }
     }
 }

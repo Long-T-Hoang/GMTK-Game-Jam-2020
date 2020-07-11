@@ -3642,6 +3642,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 1338358846587022597, guid: f3ec9537f28c04b43ac6951c9b6da940,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338358846587022597, guid: f3ec9537f28c04b43ac6951c9b6da940,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1338358846587022598, guid: f3ec9537f28c04b43ac6951c9b6da940,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4286,10 +4296,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032921, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 301559012750032924, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
         type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032924, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: sensitivity
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 301559012750032926, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
         type: 3}

@@ -7,10 +7,7 @@ public class Player : MonoBehaviour
     // Variables
     public float speed;
     public bool isCaught;
-
-    float minAngle;
-    float maxAngle;
-    float timer;
+    public float sensitivity;
 
     bool isDead;
     bool turnClockwise;
@@ -27,11 +24,15 @@ public class Player : MonoBehaviour
     Ray2D ray;
     RaycastHit2D hit;
 
+    // Properties
+    public bool Playing
+    {
+        get { return playing; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        minAngle = 0;
-        timer = 0f;
         isDead = false;
         mainCamPos = Camera.main.transform.position;
         turnClockwise = true;
@@ -55,8 +56,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Update camera position
-        if (mainCamPos.y < transform.position.y)
+        if (!playing)
+        {
+            Vector3 cameraPos = Camera.main.transform.position;
+            cameraPos.y += Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+
+            Camera.main.transform.position = cameraPos;
+        }
+        else
         {
             mainCamPos.y = transform.position.y;
 
