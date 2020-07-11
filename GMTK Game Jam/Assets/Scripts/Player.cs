@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     bool isDead;
     bool turnClockwise;
     bool playing;
+    bool isWin;
 
     Vector3 mainCamPos;
     Vector2[] directions;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         isDead = false;
+        isWin = false;
         mainCamPos = Camera.main.transform.position;
         turnClockwise = true;
         currentDirection = 0;
@@ -89,16 +91,22 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Change direction of turning when entering special zones
-        if(collision.transform.tag == "Reverse Zone")
+        if(collision.transform.CompareTag("Reverse Zone"))
         {
             turnClockwise = !turnClockwise;
+        }
+
+        if(collision.transform.CompareTag("Finish"))
+        {
+            isWin = true;
+            playing = false;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Change direction of turning when exiting special zones
-        if (collision.transform.tag == "Reverse Zone")
+        if (collision.transform.CompareTag("Reverse Zone"))
         {
             turnClockwise = !turnClockwise;
         }
@@ -106,7 +114,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Death")
+        if (collision.transform.CompareTag("Death"))
         {
             isDead = true;
         }
@@ -129,7 +137,7 @@ public class Player : MonoBehaviour
 
         if(hit.collider != null)
         {
-            if(hit.collider.tag == "Wall")
+            if(hit.collider.CompareTag("Wall"))
             {
                 currentDirection += turnClockwise ? 1 : -1;
 
