@@ -12,25 +12,37 @@ public class Player : MonoBehaviour
     float maxAngle;
     float timer;
 
-    bool isTurn;
-    bool turnClockwise;
     bool isDead;
+    bool turnClockwise;
 
     Vector3 mainCamPos;
+    Vector2[] directions;
+    Vector2 moveDirection;
+    int currentDirection;
 
     Rigidbody2D rb;
 
     WallDetector wallDetectorScript;
 
+
     // Start is called before the first frame update
     void Start()
     {
         minAngle = 0;
-        isTurn = false;
-        turnClockwise = true;
         timer = 0f;
         isDead = false;
         mainCamPos = Camera.main.transform.position;
+        turnClockwise = true;
+        currentDirection = 0;
+
+        directions = new Vector2[4];
+
+        directions[0] = transform.up;
+        directions[1] = transform.right;
+        directions[2] = -transform.up;
+        directions[3] = -transform.right;
+
+        moveDirection = directions[0];
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -53,50 +65,12 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (isTurn)
-        {
-            timer += Time.deltaTime;
-            TurnNinetyDegree();
-        }
-        else
-        {
-            MoveForward();
-        }
-
-        // Set action to turning and calculate starting and final angle
-        if (wallDetectorScript.isWall && !isTurn)
-        {
-            minAngle = transform.eulerAngles.z;
-            isTurn = true;
-            wallDetectorScript.isWall = false;
-
-            if (turnClockwise)
-            {
-                maxAngle = minAngle - 90f;
-            }
-            else
-            {
-                maxAngle = minAngle + 90f;
-            }
-        }
+        MoveForward();
     }
 
     void MoveForward()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
-    }
-
-    void TurnNinetyDegree()
-    {
-        float angle = Mathf.LerpAngle(minAngle, maxAngle, timer);
-        transform.eulerAngles = new Vector3(0, 0, angle);
-
-        // Stop turning and start moving once lerping is done
-        if(timer >= 1f)
-        {
-            isTurn = false;
-            timer = 0;
-        }
+        transform.position = (Vector2)transform.position + moveDirection * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -120,6 +94,26 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Reverse Zone")
         {
             turnClockwise = !turnClockwise;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Wall")
+        {
+            currentDirection += turnClockwise ? 1 : -1;
+
+            if(currentDirection < 0)
+            {
+                currentDirection = 3;
+            }
+
+            if(currentDirection > 3)
+            {
+                currentDirection = 0;
+            }
+
+            moveDirection = directions[currentDirection];
         }
     }
 }
