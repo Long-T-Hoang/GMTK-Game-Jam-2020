@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
     }
 
     // Start player movement
-    public void playGame()
+    public void PlayGame()
     {
         playing = !playing;
     }
