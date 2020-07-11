@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         ray.origin = transform.position;
         ray.direction = moveDirection;
 
-        hit = Physics2D.Raycast(ray.origin, ray.direction, 0.7f, );
+        hit = Physics2D.Raycast(ray.origin, ray.direction, 0.7f);
 
         if(hit.collider != null)
         {
