@@ -3021,6 +3021,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 301559012750032921, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
         type: 3}
       propertyPath: m_Name

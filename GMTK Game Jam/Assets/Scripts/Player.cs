@@ -9,11 +9,16 @@ public class Player : MonoBehaviour
 
     float minAngle;
     float maxAngle;
+    float timer;
+
     bool isTurn;
     bool turnClockwise;
-    float timer;
     bool isDead;
+    bool isCaught;
+
     Vector3 mainCamPos;
+
+    Rigidbody2D rb;
 
     WallDetector wallDetectorScript;
 
@@ -27,14 +32,23 @@ public class Player : MonoBehaviour
         isDead = false;
         mainCamPos = Camera.main.transform.position;
 
+        rb = GetComponent<Rigidbody2D>();
+
         wallDetectorScript = transform.GetChild(0).GetComponent<WallDetector>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // Update camera position
+        if (mainCamPos.y < transform.position.y)
+        {
+            mainCamPos.y = transform.position.y;
+
+            Camera.main.transform.position = mainCamPos;
+        }
+
         // Stop update if dead
-        if(isDead)
+        if (isDead || isCaught)
         {
             return;
         }
@@ -55,6 +69,7 @@ public class Player : MonoBehaviour
             minAngle = transform.eulerAngles.z;
             isTurn = true;
             wallDetectorScript.isWall = false;
+            rb.velocity = Vector2.zero;
 
             if (turnClockwise)
             {
@@ -65,19 +80,11 @@ public class Player : MonoBehaviour
                 maxAngle = minAngle + 90f;
             }
         }
-
-        // Update camera position
-        if(mainCamPos.y < transform.position.y)
-        {
-            mainCamPos.y = transform.position.y;
-
-            Camera.main.transform.position = mainCamPos;
-        }
     }
 
     void MoveForward()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        rb.velocity = transform.up * speed;
     }
 
     void TurnNinetyDegree()
@@ -105,6 +112,7 @@ public class Player : MonoBehaviour
         if(collision.transform.tag == "Death")
         {
             isDead = true;
+            rb.velocity = Vector2.zero;
         }
     }
 
