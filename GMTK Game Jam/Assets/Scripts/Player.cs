@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
             minAngle = transform.eulerAngles.z;
             isTurn = true;
             wallDetectorScript.isWall = false;
-            rb.velocity = Vector2.zero;
 
             if (turnClockwise)
             {
@@ -84,7 +83,7 @@ public class Player : MonoBehaviour
 
     void MoveForward()
     {
-        rb.velocity = transform.up * speed;
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
     void TurnNinetyDegree()
@@ -112,7 +111,6 @@ public class Player : MonoBehaviour
         if(collision.transform.tag == "Death")
         {
             isDead = true;
-            rb.velocity = Vector2.zero;
         }
     }
 
