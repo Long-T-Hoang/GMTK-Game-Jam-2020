@@ -3041,16 +3041,6 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 301559012750032924, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 301559012750032926, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
-        type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 301559012750032915, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
         type: 3}
       propertyPath: m_Simulated
@@ -3070,6 +3060,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032924, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032926, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032926, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 301559012750032927, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
         type: 3}
