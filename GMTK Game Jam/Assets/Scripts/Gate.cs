@@ -8,8 +8,6 @@ public class Gate : MonoBehaviour
     [SerializeField]
     public bool isVertical = false;
 
-    public float speed;
-
     float timer;
     bool isOpen;
     bool isMoving;
@@ -29,12 +27,12 @@ public class Gate : MonoBehaviour
         if(isVertical)
         {
             openPos = closedPos;
-            openPos.y -= transform.localScale.x;
+            openPos.y -= transform.localScale.y;
         }
         else
         {
             openPos = closedPos;
-            openPos.x -= transform.localScale.y;
+            openPos.x -= transform.localScale.x;
         }
     }
 

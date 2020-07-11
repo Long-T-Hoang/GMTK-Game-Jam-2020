@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gate Brush
   m_EditorClassIdentifier: 
   m_Cells:
-  - m_Tile: {fileID: 11400000, guid: 1661c849afffcb84e9109ca4a898911e, type: 2}
+  - m_Tile: {fileID: 0}
     m_Matrix:
       e00: 1
       e01: 0
