@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridHighlight : MonoBehaviour
+public class GridScript : MonoBehaviour
 {
     public Tile highlightTile;
     public Tilemap highlightMap;
 
+    public Tile placementTile;
+    public Tilemap placementMap;
+
     private Vector3Int previousCell;
+    private Vector3Int currentCell;
 
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
     {
         // get current grid location
-        Vector3Int currentCell = highlightMap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        currentCell = highlightMap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         // if the position has changed
         if (currentCell != previousCell)
@@ -28,5 +32,10 @@ public class GridHighlight : MonoBehaviour
             // save the new position for next frame
             previousCell = currentCell;
         }
+    }
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+            placementMap.SetTile(currentCell, placementTile);
     }
 }
