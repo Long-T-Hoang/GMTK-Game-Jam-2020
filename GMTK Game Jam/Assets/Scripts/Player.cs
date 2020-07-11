@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     // Variables
     public float speed;
+    public bool isCaught;
 
     float minAngle;
     float maxAngle;
@@ -14,7 +15,6 @@ public class Player : MonoBehaviour
     bool isTurn;
     bool turnClockwise;
     bool isDead;
-    bool isCaught;
 
     Vector3 mainCamPos;
 
