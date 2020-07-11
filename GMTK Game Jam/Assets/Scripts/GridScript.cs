@@ -16,6 +16,9 @@ public class GridScript : MonoBehaviour
     private Vector3Int previousCell;
     private Vector3Int currentCell;
 
+    private bool playing;
+
+
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
     {
@@ -45,7 +48,7 @@ public class GridScript : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !playing)
         {
             if(EventSystem.current.IsPointerOverGameObject())
             {
@@ -71,5 +74,9 @@ public class GridScript : MonoBehaviour
                 placementMap.SetTile(currentCell, placementTile);
             }
         }
+    }
+    public void playGame()
+    {
+        playing = !playing;
     }
 }
