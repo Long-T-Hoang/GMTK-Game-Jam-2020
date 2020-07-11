@@ -56,7 +56,7 @@ public class GridScript : MonoBehaviour
 
             if(hit.collider != null)
             {
-                if(hit.transform.CompareTag("Wall"))
+                if(hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Death"))
                 {
                     return;
                 }

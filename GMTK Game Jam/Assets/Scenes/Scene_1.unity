@@ -1241,7 +1241,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -4182,7 +4182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e62382986f750549bc362f171fbfe68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playing: 0
 --- !u!1 &1363566618
 GameObject:
   m_ObjectHideFlags: 0
