@@ -13,7 +13,9 @@ public class Gate : MonoBehaviour
     float timer;
     bool isOpen;
     bool isMoving;
-    Vector2 moveDirection;
+
+    Vector2 closedPos;
+    Vector2 openPos;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,18 @@ public class Gate : MonoBehaviour
         isOpen = false;
         isMoving = false;
 
-        moveDirection = isVertical ? transform.up : transform.right;
+        closedPos = transform.position;
+
+        if(isVertical)
+        {
+            openPos = closedPos;
+            openPos.y -= transform.localScale.x;
+        }
+        else
+        {
+            openPos = closedPos;
+            openPos.x -= transform.localScale.y;
+        }
     }
 
     // Update is called once per frame
@@ -56,11 +69,11 @@ public class Gate : MonoBehaviour
 
         if (isOpen)
         {
-            transform.position = (Vector2)transform.position + moveDirection * speed * Time.deltaTime;
+            transform.position = Vector2.Lerp(closedPos, openPos, timer);
         }
         else
         {
-            transform.position = (Vector2)transform.position - moveDirection * speed * Time.deltaTime;
+            transform.position = Vector2.Lerp(openPos, closedPos, timer);
         }
     }
 }

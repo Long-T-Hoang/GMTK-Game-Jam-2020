@@ -62,7 +62,14 @@ public class GridScript : MonoBehaviour
                 }
             }
 
-            placementMap.SetTile(currentCell, placementTile);
+            if (placementMap.HasTile(currentCell))
+            {
+                placementMap.SetTile(currentCell, null);
+            }
+            else
+            {
+                placementMap.SetTile(currentCell, placementTile);
+            }
         }
     }
 }

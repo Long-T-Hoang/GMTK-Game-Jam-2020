@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
 
         if(hit.collider != null)
         {
-            if(hit.collider.CompareTag("Wall"))
+            if(hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Fence"))
             {
                 currentDirection += turnClockwise ? 1 : -1;
 
