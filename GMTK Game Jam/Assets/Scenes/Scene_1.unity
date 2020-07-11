@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 303827631}
   - component: {fileID: 303827634}
   - component: {fileID: 303827633}
+  - component: {fileID: 303827635}
   m_Layer: 0
   m_Name: ReverseZone_Tiles
   m_TagString: Reverse Zone
@@ -451,10 +452,68 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!66 &303827635
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303827629}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 303827634}
+    m_ColliderPaths:
+    - - X: 30000008
+        Y: -50000008
+      - X: 10000002
+        Y: -50000008
+      - X: 10000002
+        Y: -70000016
+      - X: 30000008
+        Y: -70000016
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 2.9999716, y: -7.000002}
+      - {x: 2.9999716, y: -5.000001}
+      - {x: 1.0000002, y: -5.00003}
+      - {x: 1.0000296, y: -7.000002}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!1 &388037134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 301559012750032921, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+    type: 3}
+  m_PrefabInstance: {fileID: 1438301006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &388037135
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388037134}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &593209681
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +744,8 @@ GameObject:
   - component: {fileID: 613248159}
   - component: {fileID: 613248158}
   - component: {fileID: 613248157}
+  - component: {fileID: 613248161}
+  - component: {fileID: 613248160}
   m_Layer: 0
   m_Name: Death_Tiles
   m_TagString: Death
@@ -718,7 +779,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -1020,6 +1081,101 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &613248160
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613248155}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 613248157}
+    m_ColliderPaths:
+    - - X: 1
+        Y: -10000000
+      - X: 10000002
+        Y: -9999998
+      - X: 10000000
+        Y: 1
+      - X: 9999998
+        Y: 10000002
+      - X: 9999996
+        Y: 20000002
+      - X: 9999995
+        Y: 30000002
+      - X: 9999993
+        Y: 40000000
+      - X: 9999991
+        Y: 50000000
+      - X: -10000010
+        Y: 50000000
+      - X: -10000007
+        Y: 39999996
+      - X: -10000005
+        Y: 29999998
+      - X: -10000004
+        Y: 19999998
+      - X: -10000002
+        Y: 9999998
+      - X: -10000000
+        Y: -1
+      - X: -9999998
+        Y: -10000002
+    - - X: 10000007
+        Y: -39999996
+      - X: 10000005
+        Y: -29999998
+      - X: -9999995
+        Y: -30000002
+      - X: -9999993
+        Y: -40000000
+      - X: -9999991
+        Y: -50000000
+      - X: 10000010
+        Y: -50000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -0.9999998, y: -0.9999709}
+      - {x: 1.0000002, y: -0.9999705}
+      - {x: 0.99996984, y: 5}
+      - {x: -1.000001, y: 4.999971}
+    - - {x: 0.9999717, y: -5}
+      - {x: 0.9999712, y: -2.9999998}
+      - {x: -0.9999995, y: -3.0000296}
+      - {x: -0.99996984, y: -5}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &613248161
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613248155}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &665136262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3504,7 @@ PrefabInstance:
     - target: {fileID: 1338358846587022598, guid: f3ec9537f28c04b43ac6951c9b6da940,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7038136
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1338358846587022598, guid: f3ec9537f28c04b43ac6951c9b6da940,
         type: 3}
@@ -3572,6 +3728,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032927, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032927, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301559012750032927, guid: b0c19cd8c6e8aa54b95bade8ae42cc30,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c19cd8c6e8aa54b95bade8ae42cc30, type: 3}
@@ -3859,5 +4030,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

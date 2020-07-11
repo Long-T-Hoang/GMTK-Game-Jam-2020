@@ -22,9 +22,6 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
 
-    WallDetector wallDetectorScript;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +42,6 @@ public class Player : MonoBehaviour
         moveDirection = directions[0];
 
         rb = GetComponent<Rigidbody2D>();
-
-        wallDetectorScript = transform.GetChild(0).GetComponent<WallDetector>();
     }
 
     private void Update()
@@ -82,9 +77,23 @@ public class Player : MonoBehaviour
         }
 
         // Die on colliding with an object with "Death" tag
-        if(collision.transform.tag == "Death")
+        
+            
+        if (collision.transform.tag == "Wall")
         {
-            isDead = true;
+            currentDirection += turnClockwise ? 1 : -1;
+
+            if (currentDirection < 0)
+            {
+                currentDirection = 3;
+            }
+
+            if (currentDirection > 3)
+            {
+                currentDirection = 0;
+            }
+
+            moveDirection = directions[currentDirection];
         }
     }
 
@@ -99,21 +108,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Wall")
+        if (collision.transform.tag == "Death")
         {
-            currentDirection += turnClockwise ? 1 : -1;
-
-            if(currentDirection < 0)
-            {
-                currentDirection = 3;
-            }
-
-            if(currentDirection > 3)
-            {
-                currentDirection = 0;
-            }
-
-            moveDirection = directions[currentDirection];
+            isDead = true;
         }
     }
 }
