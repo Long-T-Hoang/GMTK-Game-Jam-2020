@@ -54,6 +54,13 @@ public class Gate : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        transform.position = (Vector2)transform.position + moveDirection * speed * Time.deltaTime;
+        if (isOpen)
+        {
+            transform.position = (Vector2)transform.position + moveDirection * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position = (Vector2)transform.position - moveDirection * speed * Time.deltaTime;
+        }
     }
 }
