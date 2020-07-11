@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     bool isDead;
     bool turnClockwise;
+    bool playing;
 
     Vector3 mainCamPos;
     Vector2[] directions;
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
     int currentDirection;
 
     Rigidbody2D rb;
+
+    // Wall detector
+    Ray2D ray;
+    RaycastHit2D hit;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +36,7 @@ public class Player : MonoBehaviour
         mainCamPos = Camera.main.transform.position;
         turnClockwise = true;
         currentDirection = 0;
+        playing = false;
 
         directions = new Vector2[4];
 
@@ -40,6 +46,9 @@ public class Player : MonoBehaviour
         directions[3] = -transform.right;
 
         moveDirection = directions[0];
+
+        ray.origin = transform.position;
+        ray.direction = moveDirection;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -55,12 +64,14 @@ public class Player : MonoBehaviour
         }
 
         // Stop update if dead
-        if (isDead || isCaught)
+        if (isDead || isCaught || !playing)
         {
             return;
         }
 
         MoveForward();
+
+        WallDetection();
     }
 
     void MoveForward()
@@ -74,26 +85,6 @@ public class Player : MonoBehaviour
         if(collision.transform.tag == "Reverse Zone")
         {
             turnClockwise = !turnClockwise;
-        }
-
-        // Die on colliding with an object with "Death" tag
-        
-            
-        if (collision.transform.tag == "Wall")
-        {
-            currentDirection += turnClockwise ? 1 : -1;
-
-            if (currentDirection < 0)
-            {
-                currentDirection = 3;
-            }
-
-            if (currentDirection > 3)
-            {
-                currentDirection = 0;
-            }
-
-            moveDirection = directions[currentDirection];
         }
     }
 
@@ -111,6 +102,42 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Death")
         {
             isDead = true;
+        }
+    }
+
+    // Start player movement
+    public void playGame()
+    {
+        playing = !playing;
+    }
+
+    // Detect walls
+    private void WallDetection()
+    {
+        // Update ray
+        ray.origin = transform.position;
+        ray.direction = moveDirection;
+
+        hit = Physics2D.Raycast(ray.origin, ray.direction, 0.7f, );
+
+        if(hit.collider != null)
+        {
+            if(hit.collider.tag == "Wall")
+            {
+                currentDirection += turnClockwise ? 1 : -1;
+
+                if (currentDirection < 0)
+                {
+                    currentDirection = 3;
+                }
+
+                if (currentDirection > 3)
+                {
+                    currentDirection = 0;
+                }
+
+                moveDirection = directions[currentDirection];
+            }
         }
     }
 }

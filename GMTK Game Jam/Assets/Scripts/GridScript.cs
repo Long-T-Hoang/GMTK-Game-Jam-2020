@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class GridScript : MonoBehaviour
 {
+    // Variables
     public Tile highlightTile;
     public Tilemap highlightMap;
 
@@ -33,6 +34,7 @@ public class GridScript : MonoBehaviour
             previousCell = currentCell;
         }
     }
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
