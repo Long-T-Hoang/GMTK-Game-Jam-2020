@@ -29,23 +29,19 @@ public class CameraController : MonoBehaviour
             Vector3 cameraPos = transform.position;
             cameraPos.y += Input.GetAxis("Mouse ScrollWheel") * sensitivity;
 
-            if(ClampCamera(cameraPos))
+            if(!ClampCamera(cameraPos))
             {
-                return;
+                transform.position = cameraPos;
             }
-
-            transform.position = cameraPos;
         }
         else
         {
             mainCamPos.y = playerScript.transform.position.y;
 
-            if (ClampCamera(mainCamPos))
+            if (!ClampCamera(mainCamPos))
             {
-                return;
+                transform.position = mainCamPos;
             }
-
-            transform.position = mainCamPos;
         }
     }
 
