@@ -8,6 +8,7 @@ TagManager:
   - Death
   - Reverse Zone
   - Fence
+  - Switch
   layers:
   - Default
   - TransparentFX
