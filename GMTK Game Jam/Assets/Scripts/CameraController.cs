@@ -29,12 +29,7 @@ public class CameraController : MonoBehaviour
             Vector3 cameraPos = transform.position;
             cameraPos.y += Input.GetAxis("Mouse ScrollWheel") * sensitivity;
 
-            if(cameraPos.y + Camera.main.orthographicSize > halfMapSize)
-            {
-                return;
-            }
-
-            if(cameraPos.y - Camera.main.orthographicSize < -halfMapSize)
+            if(ClampCamera(cameraPos))
             {
                 return;
             }
@@ -45,7 +40,27 @@ public class CameraController : MonoBehaviour
         {
             mainCamPos.y = playerScript.transform.position.y;
 
+            if (ClampCamera(mainCamPos))
+            {
+                return;
+            }
+
             transform.position = mainCamPos;
         }
+    }
+
+    private bool ClampCamera(Vector3 cameraPos)
+    {
+        if (cameraPos.y + Camera.main.orthographicSize > halfMapSize)
+        {
+            return true;
+        }
+
+        if (cameraPos.y - Camera.main.orthographicSize < -halfMapSize)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
