@@ -16,6 +16,13 @@ public class GridScript : MonoBehaviour
     private Vector3Int previousCell;
     private Vector3Int currentCell;
 
+    Player playerScript;
+
+    private void Start()
+    {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
     {
@@ -45,7 +52,7 @@ public class GridScript : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !playerScript.Playing)
         {
             if(EventSystem.current.IsPointerOverGameObject())
             {

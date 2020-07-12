@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageUIManager : MonoBehaviour
 {
     public GameObject confirmationPopUp;
     public GameObject gameButton;
     public GameObject scoreboard;
+    public GameObject scoreLabel;
 
     Player playerScript;
 

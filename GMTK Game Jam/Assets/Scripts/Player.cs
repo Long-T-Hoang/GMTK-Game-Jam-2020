@@ -7,14 +7,12 @@ public class Player : MonoBehaviour
     // Variables
     public float speed;
     public bool isCaught;
-    public float sensitivity;
 
     bool isDead;
     bool turnClockwise;
     bool playing;
     bool isWin;
 
-    Vector3 mainCamPos;
     Vector2[] directions;
     Vector2 moveDirection;
     int currentDirection;
@@ -41,7 +39,6 @@ public class Player : MonoBehaviour
     {
         isDead = false;
         isWin = false;
-        mainCamPos = Camera.main.transform.position;
         turnClockwise = true;
         currentDirection = 0;
         playing = false;
@@ -63,20 +60,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!playing)
-        {
-            Vector3 cameraPos = Camera.main.transform.position;
-            cameraPos.y += Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-
-            Camera.main.transform.position = cameraPos;
-        }
-        else
-        {
-            mainCamPos.y = transform.position.y;
-
-            Camera.main.transform.position = mainCamPos;
-        }
-
         // Stop update if dead
         if (isDead || isCaught || !playing)
         {
