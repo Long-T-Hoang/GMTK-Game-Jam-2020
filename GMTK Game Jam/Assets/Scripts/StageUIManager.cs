@@ -41,8 +41,8 @@ public class StageUIManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadSceneAsync(LevelTransition.NextLevel);
-        LevelTransition.incrementLevel();
+        SceneManager.LoadSceneAsync(LevelStats.NextLevel);
+        LevelStats.incrementLevel();
     }
 
     private void Start()

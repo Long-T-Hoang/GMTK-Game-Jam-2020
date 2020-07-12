@@ -10,8 +10,8 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(LevelTransition.NextLevel);
-        LevelTransition.incrementLevel();
+        SceneManager.LoadSceneAsync(LevelStats.NextLevel);
+        LevelStats.incrementLevel();
     }
 
     public void OptionToggle()
@@ -26,10 +26,5 @@ public class StartMenu : MonoBehaviour
             optionMenu.SetActive(true);
             mainMenu.SetActive(false);
         }
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }

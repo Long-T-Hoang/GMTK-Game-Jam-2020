@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class LevelTransition
+public static class LevelStats
 {
     private static int nextLevel = 1;
 
