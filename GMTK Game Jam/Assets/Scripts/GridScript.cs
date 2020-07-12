@@ -18,6 +18,8 @@ public class GridScript : MonoBehaviour
     private Vector3Int previousCell;
     private Vector3Int currentCell;
 
+    public int tileCount;
+
     Player playerScript;
 
     private void Start()
@@ -76,10 +78,12 @@ public class GridScript : MonoBehaviour
             if (placementMap.HasTile(currentCell))
             {
                 placementMap.SetTile(currentCell, null);
+                tileCount++;
             }
-            else
+            else if (tileCount > 0)
             {
                 placementMap.SetTile(currentCell, placementTile);
+                tileCount--;
             }
         }
     }
