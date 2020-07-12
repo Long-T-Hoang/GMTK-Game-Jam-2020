@@ -7715,7 +7715,7 @@ MonoBehaviour:
   confirmationPopUp: {fileID: 276894121}
   gameButton: {fileID: 1060327536}
   scoreboard: {fileID: 1581792949}
-  scoreLabel: {fileID: 0}
+  scoreLabel: {fileID: 1130072015}
 --- !u!1 &1303168870
 GameObject:
   m_ObjectHideFlags: 0

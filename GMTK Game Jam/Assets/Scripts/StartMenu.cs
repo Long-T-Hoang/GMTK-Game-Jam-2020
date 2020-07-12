@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public int gameScene;
     public GameObject optionMenu;
     public GameObject mainMenu;
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(gameScene);
+        SceneManager.LoadSceneAsync(LevelTransition.NextLevel);
+        LevelTransition.incrementLevel();
     }
 
     public void OptionToggle()

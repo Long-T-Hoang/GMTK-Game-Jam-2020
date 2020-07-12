@@ -39,6 +39,12 @@ public class StageUIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void LoadLevel()
+    {
+        SceneManager.LoadSceneAsync(LevelTransition.NextLevel);
+        LevelTransition.incrementLevel();
+    }
+
     private void Start()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();    
