@@ -6,7 +6,8 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
     // Variables
-    public Tilemap placementMap;
+    public Tilemap wallPlacementMap;
+    public Tilemap reversePlacementMap;
 
     Player playerScript;
     Vector3 PLAYER_SPAWN;
@@ -29,6 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         playerScript.transform.position = PLAYER_SPAWN;
 
-        placementMap.ClearAllTiles();
+        wallPlacementMap.ClearAllTiles();
+        reversePlacementMap.ClearAllTiles();
     }
 }
