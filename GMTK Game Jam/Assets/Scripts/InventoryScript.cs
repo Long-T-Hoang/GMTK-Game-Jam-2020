@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryScript : MonoBehaviour
 {
     public GameObject inventory;
-    private bool inventoryEnabled;
+    //private bool inventoryEnabled = true;
 
     public static int tileSelected = 0;
 
@@ -13,6 +13,7 @@ public class InventoryScript : MonoBehaviour
     void Update()
     {
         //Enable and disable inventory
+        /*
         if (Input.GetKeyDown(KeyCode.Tab))
             inventoryEnabled = !inventoryEnabled;
 
@@ -24,7 +25,7 @@ public class InventoryScript : MonoBehaviour
         {
             inventory.SetActive(false);
         }
-
+        */
 
     }
 }
