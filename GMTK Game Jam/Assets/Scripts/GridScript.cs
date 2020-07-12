@@ -10,14 +10,18 @@ public class GridScript : MonoBehaviour
     public Tile highlightTile;
     public Tilemap highlightMap;
 
-    public Tile placementTile;
-    public Tilemap placementMap;
+    public static Tile placementTile;
+    public static Tilemap placementMap;
 
     private Vector3Int previousCell;
     private Vector3Int currentCell;
 
-    private bool playing;
+    Player playerScript;
 
+    private void Start()
+    {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
@@ -48,7 +52,7 @@ public class GridScript : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !playing)
+        if (Input.GetMouseButtonDown(0) && !playerScript.Playing)
         {
             if(EventSystem.current.IsPointerOverGameObject())
             {
@@ -75,8 +79,19 @@ public class GridScript : MonoBehaviour
             }
         }
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+    //Disable build if the player is moving
     public void playGame()
     {
         playing = !playing;
     }
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
 }
