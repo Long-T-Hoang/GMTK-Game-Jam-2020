@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         mainCamPos = transform.position;
 
-        halfMapSize = tileGrid.GetComponent<RectTransform>().rect.height;
+        halfMapSize = tileGrid.GetComponent<RectTransform>().rect.height / 2;
     }
 
     // Update is called once per frame
