@@ -108,6 +108,12 @@ public class Player : MonoBehaviour
         {
             turnClockwise = !turnClockwise;
         }
+
+        //Switch tiles to wall when exiting switch tiles
+        if (collision.transform.CompareTag("Switch"))
+        {
+            collision.transform.tag = "Wall";
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
