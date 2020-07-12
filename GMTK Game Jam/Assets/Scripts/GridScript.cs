@@ -10,8 +10,8 @@ public class GridScript : MonoBehaviour
     public Tile highlightTile;
     public Tilemap highlightMap;
 
-    public Tile placementTile;
-    public Tilemap placementMap;
+    public static Tile placementTile;
+    public static Tilemap placementMap;
 
     private Vector3Int previousCell;
     private Vector3Int currentCell;
@@ -79,4 +79,19 @@ public class GridScript : MonoBehaviour
             }
         }
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+    //Disable build if the player is moving
+    public void playGame()
+    {
+        playing = !playing;
+    }
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
+=======
+>>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
 }
