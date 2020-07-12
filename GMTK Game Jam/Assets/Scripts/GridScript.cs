@@ -79,19 +79,4 @@ public class GridScript : MonoBehaviour
             }
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    //Disable build if the player is moving
-    public void playGame()
-    {
-        playing = !playing;
-    }
-=======
->>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
-=======
->>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
-=======
->>>>>>> ca9a087976cc028fb50e9eaee06882c6c00a463b
 }
