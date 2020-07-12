@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageUIManager : MonoBehaviour
 {
     public GameObject confirmationPopUp;
     public GameObject gameButton;
+    public GameObject scoreboard;
+
+    Player playerScript;
 
     // Methods
     public void ConfirmationToggle()
@@ -26,5 +30,24 @@ public class StageUIManager : MonoBehaviour
     {
         gameButton.SetActive(false);
         confirmationPopUp.SetActive(false);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Start()
+    {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();    
+    }
+
+    // Update score
+    private void Update()
+    {
+        if(playerScript.IsWin)
+        {
+            scoreboard.SetActive(true);
+        }
     }
 }

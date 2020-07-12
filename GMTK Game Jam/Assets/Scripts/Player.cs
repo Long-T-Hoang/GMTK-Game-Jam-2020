@@ -31,6 +31,11 @@ public class Player : MonoBehaviour
         get { return playing; }
     }
 
+    public bool IsWin
+    {
+        get { return isWin; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
