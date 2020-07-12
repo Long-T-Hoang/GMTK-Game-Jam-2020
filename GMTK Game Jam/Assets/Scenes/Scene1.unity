@@ -9351,6 +9351,7 @@ MonoBehaviour:
   defaultPlacementTile: {fileID: 11400000, guid: d9f726e5eb32eb541958074837f54c97,
     type: 2}
   defaultPlacementTilemap: {fileID: 610148235}
+  tileCount: 2
 --- !u!4 &1930793786
 Transform:
   m_ObjectHideFlags: 0
