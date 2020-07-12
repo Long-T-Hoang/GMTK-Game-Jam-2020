@@ -12,7 +12,7 @@ public class TileSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InventoryScript.tileSelected == tileSlot)
+        if (InventoryScript.tileSelected == tileSlot && tile != null && tilemap != null)
         {
             GridScript.placementTile = tile;
             GridScript.placementMap = tilemap;

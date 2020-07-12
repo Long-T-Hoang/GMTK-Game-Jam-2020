@@ -23,6 +23,14 @@ public class Player : MonoBehaviour
     Ray2D ray;
     RaycastHit2D hit;
 
+    // Animation frames
+    public float FPS;
+
+    SpriteRenderer sr;
+    public Sprite[] walkUp;
+    public Sprite[] walkDown;
+    public Sprite[] walkSide;
+
     // Properties
     public bool Playing
     {
@@ -37,10 +45,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentDirection = 0;
+
         isDead = false;
         isWin = false;
         turnClockwise = true;
-        currentDirection = 0;
         playing = false;
 
         directions = new Vector2[4];
@@ -56,6 +65,7 @@ public class Player : MonoBehaviour
         ray.direction = moveDirection;
 
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -79,7 +89,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Change direction of turning when entering special zones
-        if(collision.transform.CompareTag("Reverse Zone"))
+        if(collision.transform.CompareTag("Reverse Zone") && turnClockwise)
         {
             turnClockwise = !turnClockwise;
         }
@@ -94,7 +104,7 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Change direction of turning when exiting special zones
-        if (collision.transform.CompareTag("Reverse Zone"))
+        if (collision.transform.CompareTag("Reverse Zone") && !turnClockwise)
         {
             turnClockwise = !turnClockwise;
         }
@@ -112,6 +122,7 @@ public class Player : MonoBehaviour
     public void PlayGame()
     {
         playing = !playing;
+        PlayAnimation();
     }
 
     // Detect walls
@@ -139,8 +150,90 @@ public class Player : MonoBehaviour
                     currentDirection = 0;
                 }
 
+                if(currentDirection == 1)
+                {
+                    sr.flipX = true;
+                }
+                else
+                {
+                    sr.flipX = false;
+                }
+
                 moveDirection = directions[currentDirection];
+
+                PlayAnimation();
             }
         }
+    }
+
+    private void PlayAnimation()
+    {
+        switch (currentDirection)
+        {
+            case 0:
+                StopAllCoroutines();
+                StartCoroutine(WalkUp());
+                break;
+
+            case 1:
+                StopAllCoroutines();
+                StartCoroutine(WalkSide());
+                break;
+
+            case 2:
+                StopAllCoroutines();
+                StartCoroutine(WalkDown());
+                break;
+
+            case 3:
+                StopAllCoroutines();
+                StartCoroutine(WalkSide());
+                break;
+        }
+    }
+
+    IEnumerator WalkUp()
+    {
+        int i;
+        i = 0;
+        while (i < walkUp.Length)
+        {
+            sr.sprite = walkUp[i];
+            i++;
+            yield return new WaitForSeconds(1 / FPS);
+            yield return 0;
+
+        }
+        StartCoroutine(WalkUp());
+    }
+
+    IEnumerator WalkSide()
+    {
+        int i;
+        i = 0;
+        while (i < walkSide.Length)
+        {
+            sr.sprite = walkSide[i];
+            i++;
+            yield return new WaitForSeconds(1 / FPS);
+            yield return 0;
+
+        }
+        StartCoroutine(WalkSide());
+    }
+
+    IEnumerator WalkDown()
+    {
+        int i;
+        i = 0;
+        while (i < walkDown.Length)
+        {
+            sr.sprite = walkDown[i];
+            i++;
+            yield return new WaitForSeconds(1 / FPS);
+            yield return 0;
+
+        }
+        StartCoroutine(WalkDown());
     }
 }

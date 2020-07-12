@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 public class GridScript : MonoBehaviour
 {
     // Variables
-    public Tile highlightTile;
     public Tilemap highlightMap;
+
+    public Tile defaultPlacementTile;
+    public Tilemap defaultPlacementTilemap;
 
     public static Tile placementTile;
     public static Tilemap placementMap;
@@ -20,6 +22,8 @@ public class GridScript : MonoBehaviour
 
     private void Start()
     {
+        placementTile = defaultPlacementTile;
+        placementMap = defaultPlacementTilemap;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -40,7 +44,7 @@ public class GridScript : MonoBehaviour
         if (currentCell != previousCell)
         {
             // set the new tile
-            highlightMap.SetTile(currentCell, highlightTile);
+            highlightMap.SetTile(currentCell, placementTile);
 
             // erase previous
             highlightMap.SetTile(previousCell, null);
