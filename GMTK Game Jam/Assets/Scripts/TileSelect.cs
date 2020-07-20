@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+using UnityEngine.EventSystems;
+ 
 public class TileSelect : MonoBehaviour
 {
     public Tile tile;
@@ -22,5 +23,6 @@ public class TileSelect : MonoBehaviour
     {
         InventoryScript.tileSelected = tileSlot;
         Debug.Log(InventoryScript.tileSelected);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
