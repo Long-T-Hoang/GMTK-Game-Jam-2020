@@ -7,7 +7,6 @@ public class InventoryScript : MonoBehaviour
     public GameObject inventory;
     //private bool inventoryEnabled = true;
 
-    public static int tileSelected = 1;
 
     // Update is called once per frame
     void Update()

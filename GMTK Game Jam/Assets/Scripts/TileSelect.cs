@@ -10,10 +10,12 @@ public class TileSelect : MonoBehaviour
     public Tilemap tilemap;
     public int tileSlot;
 
+    private static int tileSelected = 1;
+
     // Update is called once per frame
     void Update()
     {
-        if (InventoryScript.tileSelected == tileSlot && tile != null && tilemap != null)
+        if (tileSelected == tileSlot && tile != null && tilemap != null)
         {
             GridScript.placementTile = tile;
             GridScript.placementMap = tilemap;
@@ -21,8 +23,8 @@ public class TileSelect : MonoBehaviour
     }
     public void selectTile()
     {
-        InventoryScript.tileSelected = tileSlot;
-        Debug.Log(InventoryScript.tileSelected);
+        tileSelected = tileSlot;
+        Debug.Log(tileSelected);
         EventSystem.current.SetSelectedGameObject(null);
     }
 }

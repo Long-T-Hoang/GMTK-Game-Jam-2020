@@ -350,6 +350,17 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1989016667}
+    - target: {fileID: 6462092941362637810, guid: 74a9d7a3c893aaa40bb7b5a6bc1f30b5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8085528532469314524, guid: b8814c83d33f044eaa43a507df945000,
+        type: 3}
+    - target: {fileID: 6462092941362637810, guid: 74a9d7a3c893aaa40bb7b5a6bc1f30b5,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6462092941362637823, guid: 74a9d7a3c893aaa40bb7b5a6bc1f30b5,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -5444,9 +5455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMap: {fileID: 54444642}
-  defaultPlacementTile: {fileID: 11400000, guid: d9f726e5eb32eb541958074837f54c97,
-    type: 2}
-  defaultPlacementTilemap: {fileID: 0}
   tileCount: 3
 --- !u!4 &1930793786
 Transform:

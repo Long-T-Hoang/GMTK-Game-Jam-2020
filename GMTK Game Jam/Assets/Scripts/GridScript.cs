@@ -9,9 +9,6 @@ public class GridScript : MonoBehaviour
     // Variables
     public Tilemap highlightMap;
 
-    public Tile defaultPlacementTile;
-    public Tilemap defaultPlacementTilemap;
-
     public static Tile placementTile;
     public static Tilemap placementMap;
 
@@ -19,13 +16,12 @@ public class GridScript : MonoBehaviour
     private Vector3Int currentCell;
 
     public int tileCount;
+    public static int currentTileCount;
 
     Player playerScript;
 
     private void Start()
     {
-        placementTile = defaultPlacementTile;
-        placementMap = defaultPlacementTilemap;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -86,5 +82,7 @@ public class GridScript : MonoBehaviour
                 tileCount--;
             }
         }
+
+        currentTileCount = tileCount;
     }
 }
